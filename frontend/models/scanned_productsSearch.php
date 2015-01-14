@@ -5,12 +5,12 @@ namespace frontend\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use frontend\models\scanned_product;
+use frontend\models\scanned_products;
 
 /**
  * scanned_productsSearch represents the model behind the search form about `app\models\scanned_product`.
  */
-class scanned_productsSearch extends scanned_product
+class scanned_productsSearch extends scanned_products
 {
     /**
      * @inheritdoc
@@ -19,7 +19,7 @@ class scanned_productsSearch extends scanned_product
     {
         return [
             [['barcode', 'amount'], 'integer'],
-            [['description', 'safe'],
+            ['description', 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class scanned_productsSearch extends scanned_product
      */
     public function search($params)
     {
-        $query = scanned_product::find();
+        $query = scanned_products::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
