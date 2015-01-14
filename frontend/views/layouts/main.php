@@ -5,10 +5,8 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use frontend\widgets\Alert;
-
 /* @var $this \yii\web\View */
 /* @var $content string */
-
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -26,24 +24,23 @@ AppAsset::register($this);
     <div class="wrap">
         <?php
             NavBar::begin([
-                'brandLabel' => 'PixWeb',
+                'brandLabel' => 'My Company',
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
                 ],
             ]);
             $menuItems = [
-                ['label' => 'Inicio', 'url' => ['/site/index']],
-                //['label' => 'Contactenos', 'url' => ['/site/contact']],
+                ['label' => 'Home', 'url' => ['/site/index']],
+                ['label' => 'About', 'url' => ['/site/about']],
+                ['label' => 'Contact', 'url' => ['/site/contact']],
             ];
             if (Yii::$app->user->isGuest) {
-                //$menuItems[] = ['label' => 'Crear administrador', 'url' => ['/site/signup']];
-                $menuItems[] = ['label' => 'Logearse', 'url' => ['/site/login']];
+                $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
+                $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
             } else {
-				 if(Yii::$app->user->identity->username == 'Admin')				  
-                $menuItems[] = ['label' => 'Crear administrador', 'url' => ['/site/signup']];
                 $menuItems[] = [
-                    'label' => 'Deslogearse (' . Yii::$app->user->identity->username . ')',
+                    'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
                     'url' => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post']
                 ];
